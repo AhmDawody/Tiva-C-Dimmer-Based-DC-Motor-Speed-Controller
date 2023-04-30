@@ -20,4 +20,6 @@ Hardawre circuit consists of two parts:
 **Additional components :** LCD 2*16, 3 push buttons, 2 100nf-25v capacitors, 24c02n EEPROM, 2 10k Ohms variable resistors and 2 4.6k , 220 Ohm resistors.<br>
 
 ## Software Part
-The software part converts the variable resistor voltage by ADC module to a time delay before triggering the triac. this is done by initializing two kinds of interrupts: GPIO interrupt and one-shot mode timer interrupt.
+The software part converts the variable resistor voltage by ADC module to a time delay before triggering the triac. this is done by initializing two kinds of interrupts: GPIO interrupt and one-shot mode timer interrupt.<br>
+GPIO interrupt used to capture the signal coming from zero crossing detector then start a timer with specific reload value, once the reload value hits 0 the timer interrupt triggers the triac leading to starting the motor.<br>
+The reload value is designed to start from the maximum reload value to start the motor from stationary to the desired speed.
