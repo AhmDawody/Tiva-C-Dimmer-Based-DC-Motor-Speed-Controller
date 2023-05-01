@@ -1,5 +1,5 @@
 ## Project Overview
-This project is a simple way to control the speed of 220V-DC Motor. a 50Hz-220V-AC zero crossing detector is used to generate a periodic pulse of 100Hz which helps to locate the starting point to trigger triac  which is controlling the DC-motor.  
+This project is a simple way to control the speed of 220V-DC Motor. a 220V-AC zero crossing detector is used to generate a periodic pulse which helps to locate the starting point to trigger triac which is controlling the DC-motor using Tiva C launchpad.  
 ## Project Features
 1- The motor starting from stationary to avoid high starting current.<br>
 2- The changing in motor speed is done in accelerating/decelerating way.<br>
@@ -7,7 +7,7 @@ This project is a simple way to control the speed of 220V-DC Motor. a 50Hz-220V-
 4- Motor Speed/Maximum speed is real time monitored on LCD.
 ## Hardware Part
 Hardawre circuit consists of two parts:  
-**First part :** "Zero crossing detector" which generates pulse of 5V every time 220V-50Hz-AC reaches zero volts.  
+**First part :** "Zero crossing detector" which generates pulse of 5V every time 220V AC reaches zero volts.  
 **Second part :** "Triac driver" which is enabled by microcontroller signal to control DC Motor.
 <div>
   <img src="https://user-images.githubusercontent.com/107086104/235359658-dbff0464-d32c-4146-bf52-9d7e73970af9.jpg" width="600">
