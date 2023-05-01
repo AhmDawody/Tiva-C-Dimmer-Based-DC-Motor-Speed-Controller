@@ -7,21 +7,36 @@ This project features a microcontroller-based dimmer circuit that controls the s
 4- An LCD screen displays the motor speed and maximum speed in real-time, providing valuable feedback on the performance of the system.
 ## Hardware Part
 ### 1- Cicuit Schematic
-* #### Zero Crossing Detector and Triac Driver
+* ### Zero Crossing Detector and Triac Driver Schematic
 <div>
-  <img src="https://user-images.githubusercontent.com/107086104/235458973-4d08c062-e231-49d3-ba0d-28958c190c40.jpg" width="400">
+  <img src="https://user-images.githubusercontent.com/107086104/235466203-2dc88544-ca48-4964-93f0-8411b25b429f.jpg" width="400">
 </div>
-The right part of this schematic is zero crossing detector which generates a pulse of 5V each time the AC source crosses 0V, which helps to locate the starting point of firing the triac angle, the output is connected to PA6.<br>
+The right part of this schematic is zero crossing detector which generates a pulse of 5V each time the AC source crosses 0V, which helps to locate the starting point to fire the triac angle, the output is connected to PA6.<br>
+The left part is triac driver with the load connected, this part is controlled by the microcontroller which is responsible of when to trigger the triac, after how many milliseconds of the starting point should I trigger the triac? the input of this part is connected to PA7.<br>
 
+* ### LCD Schematic
+<div>
+  <img src="https://user-images.githubusercontent.com/107086104/235471064-a9d7c2da-3b12-418a-b2cb-b95d2d2ccde1.jpg" width="200">
+</div>
 
-**Additional components :** LCD 2*16, 3 push buttons, 2 100nf-25v capacitors, 24c02n EEPROM, 2 10k Ohms variable resistors and 2 4.6k Ohm , 220 Ohm resistors.<br>
-* LCD is connected as 4-bit mode : DB0-3 to ground, DB4-7 to PC4-7, RS to PA2, E to PA3.
-* ADC pin : PE1.
-* I2C pins : PB2,3.
-* 3 Push buttons is connected to PE0,2,3.
-* 100nf capacitors is used with the variable resistors (between ground and movable pin) to stablize its voltage.
-* 220 Ohm resistor is used between microcontroller output pin PA7 and triac firing pin to handle the current. 
-* 2 4.6k Ohm resistors is used to connect **SDA** and **SCL** buses to 3.3V.<br>
+* 100nf capacitor is used to stablize the voltage on the variable resistor.
+* LCD may has two additional pins: Anode and Kathode, which are connected to 5V and ground respectively.<br>
+*  ### EEPROM Schematic
+<div>
+  <img src="https://user-images.githubusercontent.com/107086104/235474384-e3f6f796-c4ab-4fe7-bf63-ccdeb1186790.jpg" width="200">
+</div>
+
+* EEPROM speed is 100Kbps which is suitable with 4.6k Ohm resistors.
+* EEPROM power is connected to 5V source.<br>
+
+* ### ADC and Buttons Schematic
+<div>
+  <img src="https://user-images.githubusercontent.com/107086104/235476778-a32e660b-26e0-4670-b68c-f9d5bc2654a1.jpg" width="200">
+</div>
+
+* PE0 is "Enter" button which is used to set maximum speed.
+* PE2,3 is "Up/Down" buttons which is used to customize maximum speed.
+* Internal pull down resistors is set.
 
 ## Software Part
 The software part converts the variable resistor voltage by ADC module to a time delay before triggering the triac. this is done by initializing two kinds of interrupts: **GPIO interrupt** and **one-shot mode timer interrupt**.<br>
