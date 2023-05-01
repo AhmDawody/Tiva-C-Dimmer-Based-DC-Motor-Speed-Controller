@@ -55,7 +55,7 @@ Initialization started with interrupts disabled, then **PLLInit()** is called to
 Triac is controlled using two types of interrupts : **GPIO Interrupts** on portA and **Timer2 one-shot mode Interrupts**.<br>
 GPIO interrupts is used to capture the signal of zero crossing detector, every time the AC voltage crosses 0V an interrupt happen.
 <div>
-  <img src="https://user-images.githubusercontent.com/107086104/235492514-8ee6d3d2-ecd5-4f7f-a842-ce3219688164.png" width="500">
+  <img src="https://user-images.githubusercontent.com/107086104/235495535-69e3f0a0-1607-4907-9796-2742210288c7.png" width="500">
 </div>
 
 * PortA ISR job is starting timer2 with specific value depending on the value of variable resistor, starting from maximum reload value which is the most delay time before triggering triac to start motor from stationary and increase its speed gradually at specific rate.<br>
