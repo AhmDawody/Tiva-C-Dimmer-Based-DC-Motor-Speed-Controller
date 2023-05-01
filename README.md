@@ -95,16 +95,39 @@ void Timer2A_Handler(void){
 * Timer2 ISR job is to trigger triac when its reload value goes from 1 to 0.<br>
 
 * ## LCD Display and User Input Handling
+
 * The program display just has two screens, one to display motor speed and maximum speed and the other one to change the maximum speed, by calling the function **update_screen()** on the main program loop.<br>
 <div>
   <img src="https://user-images.githubusercontent.com/107086104/235498633-51da4c24-c1b9-46e8-9dd4-92cf7344c2b2.jpg" width="400">
   <img src="https://user-images.githubusercontent.com/107086104/235498687-4d951813-aec6-4a29-9709-eeade77ad925.jpg" width="400">
-</div><br>
-
+</div>
 * User Input handling is done by checking if user clicked buttons every time function **BUTTONS_Check()** is called by polling over the main program loop.
+
 ```
-while(1){
-        update_screen();                        // Update program screen
-        BUTTONS_Check();                        // Check for button if clicked
+    if(screen == 1){                                            // Main screen
+        if(enter && prev_enter == 0){
+            LCD_Cmd(LCD_CLEAR);
+            screen =2;
+        }
+    }
+    else if(screen == 2){                                       // Second screen
+        if(up){
+            inc_max();
+        }
+        else if(down){
+            dec_max();
+        }
+        else if(enter && prev_enter == 0){
+            // Send max value to be saved on startup
+            max = get_max();
+            I2C_Send(max);
+            // Clear screen on go to main screen
+            LCD_Cmd(LCD_CLEAR);
+            screen = 1;
+        }
+    }
+    prev_enter =enter;
 }
 ```
+
+* Enter button is used to switch between main and secondary screens, but it has another function if used in the secondary screen which is saving the maximum value in the EEPROM.
