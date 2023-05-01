@@ -101,6 +101,7 @@ void Timer2A_Handler(void){
   <img src="https://user-images.githubusercontent.com/107086104/235498633-51da4c24-c1b9-46e8-9dd4-92cf7344c2b2.jpg" width="400">
   <img src="https://user-images.githubusercontent.com/107086104/235498687-4d951813-aec6-4a29-9709-eeade77ad925.jpg" width="400">
 </div>
+
 * User Input handling is done by checking if user clicked buttons every time function **BUTTONS_Check()** is called by polling over the main program loop.
 
 ```
