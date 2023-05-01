@@ -6,15 +6,13 @@ This project features a microcontroller-based dimmer circuit that controls the s
 3- The system allows users to set a maximum speed for the motor, which is saved in non-volatile memory.<br>
 4- An LCD screen displays the motor speed and maximum speed in real-time, providing valuable feedback on the performance of the system.
 ## Hardware Part
+### 1- Cicuit Schematic
+* #### Zero Crossing Detector and Triac Driver
 <div>
-  <img src="https://user-images.githubusercontent.com/107086104/235359658-dbff0464-d32c-4146-bf52-9d7e73970af9.jpg" width="320" height="240">
-   <img src="https://user-images.githubusercontent.com/107086104/235360290-bbaa80d2-3818-4908-8ff9-65cfdbc56bd2.jpg" width="320">
-  <img src="https://user-images.githubusercontent.com/107086104/235360428-6668084e-23c7-4101-8afa-8235fcc184ca.jpg" width="320">
+  <img src="https://user-images.githubusercontent.com/107086104/235458973-4d08c062-e231-49d3-ba0d-28958c190c40.jpg" width="400">
 </div>
-Hardawre circuit consists of two parts:<br>
+The right part of this schematic is zero crossing detector which generates a pulse of 5V each time the AC source crosses 0V, which helps to locate the starting point of firing the triac angle, the output is connected to PA6.<br>
 
-**First part :** "Zero crossing detector" which generates pulse of 5V every time 220V AC reaches zero volts.  
-**Second part :** "Triac driver" which is enabled by microcontroller signal to control DC Motor.
 
 **Additional components :** LCD 2*16, 3 push buttons, 2 100nf-25v capacitors, 24c02n EEPROM, 2 10k Ohms variable resistors and 2 4.6k Ohm , 220 Ohm resistors.<br>
 * LCD is connected as 4-bit mode : DB0-3 to ground, DB4-7 to PC4-7, RS to PA2, E to PA3.
