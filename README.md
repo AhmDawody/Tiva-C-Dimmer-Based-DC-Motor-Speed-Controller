@@ -48,5 +48,15 @@ The left part is triac driver with the load connected, this part is controlled b
   <img src="https://user-images.githubusercontent.com/107086104/235486584-338fdc33-3c94-403d-ac46-275a9bfcd9e3.png" width="200">
 </div><br>
 
-The program is written using direct register access mode, and started with interrupts disabled, then **PLLInit()** is called to set system clock to 80Mhz to be suitable for ADC module, after that systick timer is initialized by calling **Sys_Init()** which is used to create time delays only, then LCD is initialized to operate on 4-bit mode by calling **LCD_Init()**, then ADC module initialized on PE1 by calling **ADCInit()**, then the buttons used to change/customize the motor maximum speed is initialized on port E using **BUTTONS_Init()**
+The program is written using direct register access mode.<br> 
+Initialization started with interrupts disabled, then **PLLInit()** is called to set system clock to 80Mhz to be suitable for ADC module, after that systick timer is initialized by calling **Sys_Init()** which is used to create time delays only, then LCD operated on 4-bit mode by calling **LCD_Init()**, then ADC module on PE1 by calling **ADCInit()**, then the buttons used to change/customize the motor maximum speed on portE using **BUTTONS_Init()**, then portA which is responsible of capturing zero crossing signals and starting the timer2 by calling **PortA_Init()**, then I2C module which is used to communicate with EEPROM by calling **I2C_Init()**, then **Update_max()** is called which is used to recieve the maximum value stored in EEPROM to start the program with this value, then timer 2 which is used to triggering triac by calling **Timer2_Init()**, finally clearing LCD and enabling interrupts to start the program.<br>
+
+* ### Triac Firing Control
+Triac is controlled using two types of interrupts : **GPIO Interrupts** on portA and **Timer2 one-shot mode Interrupts**.<br>
+GPIO interrupts is used to capture the signal of zero crossing detector, every time the AC voltage crosses 0V an interrupt happen.
+<div>
+  <img src="https://user-images.githubusercontent.com/107086104/235492514-8ee6d3d2-ecd5-4f7f-a842-ce3219688164.png" width="500">
+</div>
+PortA ISR job is starting timer2 with specific value depending on the value of variable resistor, starting from maximum reload value which is the most delay time before triggering triac to start motor from stationary and increase its speed gradually at specific rate.<br>
+The software comparing the sample coming from ADC with the value to reload the timer with (the same way PI controller operate with).
 
