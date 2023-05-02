@@ -11,6 +11,8 @@ This project features a microcontroller-based dimmer circuit that controls the s
 * ## Zero Crossing Detector and Triac Driver Schematic
 <div>
   <img src="https://user-images.githubusercontent.com/107086104/235466203-2dc88544-ca48-4964-93f0-8411b25b429f.jpg" width="400">
+  <img src="https://user-images.githubusercontent.com/107086104/235646979-1f6fed87-4113-440e-9f17-c6c96c3db488.jpg" width="300">
+  <img src="https://user-images.githubusercontent.com/107086104/235647152-9aa7ea96-96fc-4681-8dfa-80ef624b34a6.jpg" width="300">
 </div>
 The circuit uses 5 and 3.3 V power supplies, you can use the microcontroller 5V, 3.3V pins, 220V AC is the motor supply voltage before rectification.
 The right part of this schematic is zero crossing detector which generates a pulse of 5V each time the AC source crosses 0V, which helps to locate the starting point to fire the triac angle, the output is connected to PA6.<br>
@@ -31,7 +33,6 @@ The left part is triac driver with the load connected, this part is controlled b
 
 * EEPROM AT24C02.
 * EEPROM speed is 100Kbps which is suitable with 4.6k Ohm resistors.
-* EEPROM power is connected to 5V source.<br>
 
 * ## ADC and Buttons Schematic
 <div>
