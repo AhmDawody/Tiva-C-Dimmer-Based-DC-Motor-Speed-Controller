@@ -132,4 +132,4 @@ void Timer2A_Handler(void){
 }
 ```
 
-* Enter button is used to switch between main and secondary screens, but it has another function if used in the secondary screen which is saving the maximum value in the EEPROM.
+* Enter button is used to switch between main and secondary screens, but it has another function, if used in the secondary screen, it saves the maximum value in the EEPROM.
