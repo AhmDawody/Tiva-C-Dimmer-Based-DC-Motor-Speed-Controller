@@ -140,6 +140,7 @@ void BUTTONS_Check(void){
 * Enter button is used to switch between main and secondary screens, but it has another function, if used in the secondary screen, it saves the maximum value in the EEPROM.<br>
 
 # Demonstration Video
-Watch this 28-second video to see how changing the firing angle of the Triac affects the intensity of the light connected to the system. The video shows the Tiva C Launchpad being used to control the speed of the motor, which is connected to the Triac, and in turn, controls the intensity of the light. You can see how the light becomes brighter or dimmer as the firing angle is changed using the software interface.<br>
+Watch this 28-second video to see how changing the firing angle of the Triac affects the intensity of the light connected to the system.<br>
+The video shows the Tiva C Launchpad being used to control the intensity of the light. You can see how the light becomes brighter or dimmer as the firing angle is changed using the software interface.<br>
 
 [![Go to video](https://user-images.githubusercontent.com/107086104/235716001-ff63a008-8d32-4817-89e6-9c55ed1e4c46.png)](https://drive.google.com/file/d/1BZtU5o6137dQxpRMW6ALGo80_WTZslON/view?usp=share_link)
