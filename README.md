@@ -106,6 +106,11 @@ void Timer2A_Handler(void){
 * User Input is handled by checking if user clicked buttons every time function **BUTTONS_Check()** is called by polling over the main program loop.  
 
 ```
+void BUTTONS_Check(void){
+    uint8_t max;
+    enter = GPIO_PORTE_DATA_R&(1<<0);
+    up = GPIO_PORTE_DATA_R&(1<<2);
+    down = GPIO_PORTE_DATA_R&(1<<3);
     if(screen == 1){                                            // Main screen
         if(enter && prev_enter == 0){
             LCD_Cmd(LCD_CLEAR);
