@@ -10,11 +10,11 @@ This project features a microcontroller-based dimmer circuit that controls the s
 # Hardware Part
 * ## Zero Crossing Detector and Triac Driver Schematic
 <div>
-  <img src="https://user-images.githubusercontent.com/107086104/235466203-2dc88544-ca48-4964-93f0-8411b25b429f.jpg" width="800">
-</div><br>
-<div>
   <img src="https://user-images.githubusercontent.com/107086104/235646979-1f6fed87-4113-440e-9f17-c6c96c3db488.jpg" width="400">
   <img src="https://user-images.githubusercontent.com/107086104/235647152-9aa7ea96-96fc-4681-8dfa-80ef624b34a6.jpg" width="400">
+</div>
+<div>
+  <img src="https://user-images.githubusercontent.com/107086104/235466203-2dc88544-ca48-4964-93f0-8411b25b429f.jpg" width="800">
 </div>
 The circuit uses 5 and 3.3 V power supplies, you can use the microcontroller 5V, 3.3V pins, 220V AC is the motor supply voltage before rectification.
 The right part of this schematic is zero crossing detector which generates a pulse of 5V each time the AC source crosses 0V, which helps to locate the starting point to fire the triac angle, the output is connected to PA6.<br>
@@ -86,7 +86,7 @@ void GPIOPortA_Handler(void){
 }
 ```
 * PortA ISR job is starting timer2 with specific value depending on the value of variable resistor, starting from maximum reload value which is the most delay time before triggering triac to start motor from stationary and increase its speed gradually at specific rate.<br>
-The software comparing the sample coming from ADC with the value to reload the timer with (the same way PI controller operate with).
+The software comparing the sample coming from ADC with the value to reload the timer with (the same idea PI controller operates with).
 ```
 // Timer2A ISR
 // -----------
@@ -145,4 +145,7 @@ void BUTTONS_Check(void){
 Watch this 28-second video to see how changing the firing angle of the Triac affects the intensity of the light connected to the system.<br>
 The video shows the Tiva C Launchpad being used to control the intensity of the light. You can see how the light becomes brighter or dimmer as the firing angle is changed using the software interface.<br>
 
-[![Go to video](https://user-images.githubusercontent.com/107086104/235716001-ff63a008-8d32-4817-89e6-9c55ed1e4c46.png)](https://drive.google.com/file/d/1BZtU5o6137dQxpRMW6ALGo80_WTZslON/view?usp=share_link)
+[![Go to video](https://user-images.githubusercontent.com/107086104/235716001-ff63a008-8d32-4817-89e6-9c55ed1e4c46.png)](https://drive.google.com/file/d/1BZtU5o6137dQxpRMW6ALGo80_WTZslON/view?usp=share_link)<br>
+
+# References
+LCD Software : Eng/ Mohamed Yousef [Youtube ARM Playlist](https://youtube.com/playlist?list=PLfgCIULRQavwpLde25KzYgwgQ57-n2_xF).
