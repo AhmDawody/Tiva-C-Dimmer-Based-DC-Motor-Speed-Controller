@@ -57,7 +57,7 @@ void GPIOPortA_Handler(void){
 // Triggers PA7
 // -------------
 void Trigger(void){
-    uint32_t i;
+    volatile uint32_t i;
     GPIO_PORTA_DATA_R |= (1<<7);
     for (i = 0; i < 120; i++);                          // Wait
     GPIO_PORTA_DATA_R &= ~(1<<7);
